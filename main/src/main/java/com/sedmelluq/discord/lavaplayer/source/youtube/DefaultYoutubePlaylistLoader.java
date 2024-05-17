@@ -90,7 +90,7 @@ public class DefaultYoutubePlaylistLoader implements YoutubePlaylistLoader {
         // Also load the next pages, each result gives us a JSON with separate values for list html and next page loader html
         while (continuationsToken != null && ++loadCount < pageCount) {
             HttpPost post = new HttpPost(BROWSE_URL);
-            YoutubeClientConfig clientConfig = YoutubeClientConfig.WEB.copy()
+            YoutubeClientConfig clientConfig = YoutubeClientConfig.ANDROID.copy()
                 .withRootField("continuation", continuationsToken)
                 .setAttribute(httpInterface);
             StringEntity payload = new StringEntity(clientConfig.toJsonString(), "UTF-8");
